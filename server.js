@@ -7,10 +7,11 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
+// sets the port to the env variable or defaults to 3001
 const PORT = process.env.PORT || 3001;
 
 const sess = {
-    secret: 'Super secret secret',
+    secret: 'tech blog secret',
     cookie: {},
     resave: false,
     saveUninitialized: true,
