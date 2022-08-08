@@ -30,8 +30,10 @@ Post.init(
     },
     {
         sequelize,
-        freezeTableNameName: true,
+        freezeTableName: true,
         underscored: true,
         modelName: 'post'
     }
-)
+);
+
+module.exports = Post;
