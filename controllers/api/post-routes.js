@@ -1,36 +1,31 @@
 const router = require('express').Router();
-const { User, Post, Comment, Vote } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     console.log('======================');
-    Post.findAll({
-        attributes: [
-            'id',
-            'post_url',
-            'title',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-        ],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
+    try {
+        const dbPostData = await Post.findAll({
+            attributes: ['id', 'title', 'created_at'],
+            include: [
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                },
+                {
                     model: User,
                     attributes: ['username']
                 }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
-    })
-        .then(dbPostData => res.json(dbPostData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
+            ]
         });
+        res.json(dbPostData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    };
 });
 
 module.exports = router;
