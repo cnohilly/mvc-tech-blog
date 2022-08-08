@@ -3,7 +3,6 @@ const { User, Post, Comment } = require('../../models');
 
 // route to get all posts
 router.get('/', async (req, res) => {
-    console.log('======================');
     try {
         const dbPostData = await Post.findAll({
             attributes: ['id', 'title', 'created_at'],
