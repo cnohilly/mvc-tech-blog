@@ -88,4 +88,22 @@ router.put('/:id', async (req, res) => {
     };
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const dbUserData = await User.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No user found with this id.' });
+            return;
+        }
+        res.json(dbUserData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    };
+});
+
 module.exports = router;
