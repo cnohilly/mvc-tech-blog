@@ -60,6 +60,21 @@ router.get('/:id', async (req, res) => {
     };
 });
 
+// route to make a new post
+// expects title: string, user_id: integer
+router.post('/', async (req, res) => {
+    try {
+        const dbPostData = await Post.create({
+            title: req.body.title,
+            user_id: req.session.user_id
+        });
+        res.json(dbPostData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    };
+});
+
 
 
 module.exports = router;
