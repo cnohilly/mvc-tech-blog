@@ -75,6 +75,48 @@ router.post('/', async (req, res) => {
     };
 });
 
+// route to update post
+router.put('/:id', (req, res) => {
+    try {
+        const dbPostData = await Post.update(
+            {
+                title: req.body.title,
+            },
+            {
+                where: {
+                    id: req.params.id
+                }
+            }
+        );
+        if (!dbPostData) {
+            res.status(404).json({ message: 'No post found with this id.' });
+            return;
+        }
+        res.json(dbPostData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    };
+});
 
+// route to delete post
+// route to update post
+router.delete('/:id', (req, res) => {
+    try {
+        const dbPostData = await Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        });
+        if (!dbPostData) {
+            res.status(404).json({ message: 'No post found with this id.' });
+            return;
+        }
+        res.json(dbPostData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    };
+});
 
 module.exports = router;
