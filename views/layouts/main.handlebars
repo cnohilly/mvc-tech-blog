@@ -6,32 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Tech Blog</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-secondary">
     <header>
-        <nav>
-            <a href="/">Home</a>
-            {{#if loggedIn}}
-            <a href="/dashboard">Dashboard</a>
-            <button id="logout" class="btn-no-style">Logout</button>
-            {{else}}
-            <a href="/login">Login</a>
-            {{/if}}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">The Tech Blog</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        {{#if loggedIn}}
+                        <li>
+                            <a href="/dashboard">Dashboard</a>
+                        </li>
+                        {{/if}}
+                    </ul>
+                    <div class="navbar-end my-auto ml-0 mr-2">
+                        {{#if loggedIn}}
+                        <button id="logout" class="btn btn-danger">Logout</button>
+                        {{else}}
+                        <button class="btn btn-success">Login</button>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
         </nav>
-        <h1>
-            <a href="/">The Tech Blog</a>
-        </h1>
     </header>
-    <div class="wrapper">
-        <main>
-            {{{ body }}}
-        </main>
-        <footer>
+    <main class="my-3">
+        {{{ body }}}
+    </main>
+    <footer class="p-2 fixed-bottom text-bg-dark d-flex justify-content-center align-items-center">
+        <p class="">
             Thanks for visiting!
-        </footer>
-    </div>
+        </p>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>
     {{/if}}

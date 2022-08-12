@@ -75,7 +75,7 @@ router.post('/', async (req, res) => {
 });
 
 // route to update post
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const dbPostData = await Post.update(
             {
@@ -99,8 +99,7 @@ router.put('/:id', (req, res) => {
 });
 
 // route to delete post
-// route to update post
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const dbPostData = await Post.destroy({
             where: {
