@@ -1,12 +1,22 @@
-<form>
-    <div class="mb-3">
-        <label for="username-input" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username-input">
-    </div>
-    <div class="mb-3">
-        <label for="password-input" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password-input" aria-describedby="password-help">
-        <div id="password-help" class="form-text">Password must be at least 4 characters.</div>
-    </div>
-    <button type="submit" class="btn btn-success">Login</button>
-</form>
+<div class="h-100 d-flex justify-content-center align-items-center">
+    <form class="card m-3 flex-grow-1 flex-md-grow-0">
+        <div class="card-header text-center">
+            Login
+        </div>
+        <div class="card-body mx-md-3">
+            <div class="mb-3">
+                <label for="username-input" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username-input">
+            </div>
+            <div class="mb-3">
+                <label for="password-input" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password-input" aria-describedby="password-help">
+                <div id="password-help" class="form-text">Password must be at least 4 characters.</div>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Login</button>
+            <div class="text-center">
+                <a href="./signup" class="text-center">Don't have an account? Sign-up!</a>
+            </div>
+        </div>
+    </form>
+</div>
