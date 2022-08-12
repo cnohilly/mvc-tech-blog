@@ -10,7 +10,7 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 
-<body class="bg-secondary">
+<body class="bg-secondary d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
@@ -20,7 +20,7 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
@@ -35,19 +35,20 @@
                         {{#if loggedIn}}
                         <button id="logout" class="btn btn-danger">Logout</button>
                         {{else}}
-                        <button class="btn btn-success">Login</button>
+                        <a href="/login"><button class="btn btn-success">Login</button></a>
                         {{/if}}
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-    <main class="my-3">
+    <main class="flex-grow-1">
         {{{ body }}}
     </main>
-    <footer class="p-2 position-static bottom-0 text-bg-dark d-flex justify-content-center align-items-center">
-        <p class="">
-            Thanks for visiting!
+    <footer class="py-2 text-bg-dark text-center">
+        <p class="my-0">
+            Thanks for visiting! If you would like to see the repository for this project, please go to
+            <a href="https://github.com/cnohilly/mvc-tech-blog" target="_blank">GitHub</a>.
         </p>
     </footer>
 
