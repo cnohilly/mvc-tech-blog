@@ -26,6 +26,13 @@ Post.init(
                 model: 'user',
                 key: 'id'
             }
+        },
+        content: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         }
     },
     {
