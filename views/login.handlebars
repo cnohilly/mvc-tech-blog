@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center align-items-center">
-    <form class="card m-3 flex-grow-1 flex-md-grow-0">
+    <form class="card m-3 flex-grow-1 flex-md-grow-0 login-form">
         <div class="card-header text-center">
             Login
         </div>
@@ -14,9 +14,14 @@
                 <div id="password-help" class="form-text">Password must be at least 4 characters.</div>
             </div>
             <button type="submit" class="btn btn-success w-100 mb-3">Login</button>
-            <div class="text-center">
-                <a href="./signup" class="text-center">Don't have an account? Sign-up!</a>
+            <div class="alert alert-danger login-alert d-none text-center" role="alert">
+                <i class="bi bi-exclamation-diamond"></i>&nbsp;&nbsp;Invalid Information
             </div>
+            <p class="text-center">
+                <a href="./signup" class="text-center">Don't have an account? Sign-up!</a>
+            </p>
         </div>
     </form>
 </div>
+
+<script src="/js/login.js"></script>
