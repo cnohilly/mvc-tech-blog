@@ -1,6 +1,5 @@
 async function loginFormHandler(event) {
     event.preventDefault();
-    console.log('here');
     const username = document.querySelector('#username-input').value.trim();
     const password = document.querySelector('#password-input').value.trim();
 
@@ -16,11 +15,14 @@ async function loginFormHandler(event) {
 
         if (response.ok) {
             document.location.replace('/')
+        } else {
+            console.log(response);
+            // $('.alert-text').text(response.message);
         }
+    } else {
+        $('.alert-text').text('Must provide username and password')
     }
-    else {
-        $('.login-alert').removeClass('d-none')
-    }
+    $('.login-alert').removeClass('d-none');
 }
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
