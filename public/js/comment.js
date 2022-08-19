@@ -1,9 +1,14 @@
 async function commentFormHandler(event) {
     event.preventDefault();
 
-    const locParams = window.location.split('/');
+    // alternative method of getting the id of post
+    // const post_id = document.querySelector('.post-card').getAttribute('data-post-id');
+
+    const locParams = window.location.toString().split('/');
     const post_id = locParams[locParams.length - 1];
     const comment_text = document.querySelector('#comment-input').value.trim();
+
+    console.log(comment_text);
 
     if (comment_text) {
         try {
