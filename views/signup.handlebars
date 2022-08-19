@@ -9,8 +9,8 @@
                 <input type="text" class="form-control" id="username-input">
             </div>
             <div class="mb-3">
-                <label for="email-input" class="form-label">Username</label>
-                <input type="text" class="form-control" id="email-input">
+                <label for="email-input" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email-input">
             </div>
             <div class="mb-3">
                 <label for="password-input" class="form-label">Password</label>
@@ -18,6 +18,9 @@
                 <div id="password-help" class="form-text">Password must be at least 4 characters.</div>
             </div>
             <button type="submit" class="btn btn-warning w-100 mb-3">Sign Up</button>
+            <div class="alert alert-danger signup-alert d-none text-center" role="alert">
+                <i class="bi bi-exclamation-diamond me-2"></i><span class="alert-text">Invalid Information</span>
+            </div>
             <div class="text-center">
                 <a href="./login" class="text-center">Already have an account? Login!</a>
             </div>

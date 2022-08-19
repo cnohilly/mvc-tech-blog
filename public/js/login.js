@@ -13,7 +13,6 @@ async function loginFormHandler(event) {
                 }),
                 headers: { 'Content-Type': 'application/json' }
             });
-            console.log(response);
             if (response.ok) {
                 // replace location to homepage + reload
                 document.location.replace('/');
@@ -23,6 +22,7 @@ async function loginFormHandler(event) {
             console.log(err);
         }
     }
+    // will show alert if the user failed to login, either from a post error or the fields are empty
     $('.login-alert').removeClass('d-none');
 }
 
