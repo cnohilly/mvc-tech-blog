@@ -4,23 +4,24 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#password-input').value.trim();
 
     if (username && password) {
-        const response = await fetch('/api/users/login', {
-            method: 'post',
-            body: JSON.stringify({
-                username,
-                password
-            }),
-            headers: { 'Content-Type': 'application/json' }
-        });
-
-        if (response.ok) {
-            document.location.replace('/')
-        } else {
+        try {
+            const response = await fetch('/api/users/login', {
+                method: 'post',
+                body: JSON.stringify({
+                    username,
+                    password
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            });
             console.log(response);
-            // $('.alert-text').text(response.message);
+            if (response.ok) {
+                // replace location to homepage + reload
+                document.location.replace('/');
+                document.location.reload();
+            }
+        } catch (err) {
+            console.log(err);
         }
-    } else {
-        $('.alert-text').text('Must provide username and password')
     }
     $('.login-alert').removeClass('d-none');
 }
