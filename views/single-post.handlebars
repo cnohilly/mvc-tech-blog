@@ -5,8 +5,23 @@
         </div>
     </div>
     <div class="container px-md-5">
+        {{#if loggedIn}}
+        <div class="row py-2 mx-3">
+            <div class="col">
+                <form class="bg-light p-3 rounded text-end">
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <span class="input-group-text">Comment</span>
+                            <textarea class="form-control" id="comment-input" aria-label="comment-text"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                </form>
+            </div>
+        </div>
+        {{/if}}
         {{#each post.comments as |comment| }}
-        <div class="row py-1">
+        <div class="row py-1 mx-3">
             <div class="col">
                 {{> single-comment comment}}
             </div>
@@ -14,3 +29,7 @@
         {{/each}}
     </div>
 </div>
+
+{{#if loggedIn}}
+
+{{/if}}
