@@ -4,9 +4,13 @@
             {{> article-card post}}
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-
+    <div class="container px-md-5">
+        {{#each post.comments as |comment| }}
+        <div class="row py-1">
+            <div class="col">
+                {{> single-comment comment}}
+            </div>
         </div>
+        {{/each}}
     </div>
 </div>
