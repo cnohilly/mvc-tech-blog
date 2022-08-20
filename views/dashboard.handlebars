@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container mt-3 flex-grow-1">
     <div class="accordion" id="posts-accordion">
         {{#each posts as |post| }}
         <div class="accordion-item" data-post-id="{{post.id}}">
@@ -37,5 +37,9 @@
         {{/each}}
     </div>
 </div>
+<button type="button" class="btn btn-success new-post-button my-2 fs-3 align-self-center">
+    <i class="bi bi-plus-square me-2"></i><span class="py-auto"> New Post</span>
+</button>
+
 
 <script src="/js/dashboard.js"></script>
