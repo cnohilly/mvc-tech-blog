@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
     };
 });
 
+// route to create a comment
 router.post('/', async (req, res) => {
     try {
         const dbCommentData = await Comment.create({
@@ -22,6 +23,6 @@ router.post('/', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     };
-})
+});
 
 module.exports = router;

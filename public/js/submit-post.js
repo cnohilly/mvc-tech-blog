@@ -3,8 +3,9 @@ async function submitPostHandler(event) {
     const title = $('#post-title').val().trim();
     const content = $('#post-content').val().trim();
 
-    console.log(title, content);
+    // makes sure both fields are filled
     if (title && content) {
+        // attempts to create the new post and redirects to dashboard
         try {
             const response = await fetch('/api/posts', {
                 method: 'POST',

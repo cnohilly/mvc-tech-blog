@@ -1,7 +1,10 @@
 
 async function editPostHandler(event) {
     event.preventDefault();
+
+    // gets the id attribute of the form
     const post_id = $(this).attr('id');
+    // finds the first children of the form for post-title and post-content and gets the values
     const title = $(this).find('.post-title').first().val().trim();
     const content = $(this).find('.post-content').first().val().trim();
     // exits the function if both fields are empty
@@ -16,6 +19,7 @@ async function editPostHandler(event) {
     if (content) {
         updateBody.content = content;
     }
+    // attempts to update the post and reload the page
     const response = await fetch(`/api/posts/${post_id}`, {
         method: 'PUT',
         body: JSON.stringify({ ...updateBody }),
@@ -30,10 +34,12 @@ async function editPostHandler(event) {
     }
 }
 
+// handles deleting the specific post
 async function deletePostHandler(event) {
     event.preventDefault();
+    // gets the form the button is a child of and gets the value of the id attribute
     const post_id = $(this).closest('.edit-post-form').attr('id');
-    console.log(post_id);
+    // attempts to delete the specific id post and reload the page
     const response = await fetch(`/api/posts/${post_id}`, {
         method: 'DELETE'
     });

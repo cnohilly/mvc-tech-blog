@@ -1,10 +1,14 @@
 async function loginFormHandler(event) {
     event.preventDefault();
+
+    // gets the values from the input fields
     const username = document.querySelector('#username-input').value.trim();
     const password = document.querySelector('#password-input').value.trim();
 
+    // ensures the fields are not empty
     if (username && password) {
         try {
+            // attempts to log the user in and go to homepage
             const response = await fetch('/api/users/login', {
                 method: 'post',
                 body: JSON.stringify({

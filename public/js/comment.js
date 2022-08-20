@@ -4,14 +4,16 @@ async function commentFormHandler(event) {
     // alternative method of getting the id of post
     // const post_id = document.querySelector('.post-card').getAttribute('data-post-id');
 
+    // gets the location and retrieves the post_id from the url
     const locParams = window.location.toString().split('/');
     const post_id = locParams[locParams.length - 1];
+    // gets the value from the input field
     const comment_text = document.querySelector('#comment-input').value.trim();
 
-    console.log(comment_text);
-
+    // if the text is not empty
     if (comment_text) {
         try {
+            // attempts to post the comment and reload the page
             const response = await fetch('/api/comments/', {
                 method: 'post',
                 body: JSON.stringify({
@@ -23,6 +25,8 @@ async function commentFormHandler(event) {
             if (response.ok) {
                 // reload the current page
                 document.location.reload();
+            } else {
+                alert(response.statusText);
             }
         } catch (err) {
             console.log(err);
