@@ -120,4 +120,14 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+router.get('/new-post', (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+        return;
+    }
+    res.render('new-post', {
+        loggedIn: req.session.loggedIn
+    });
+});
+
 module.exports = router;
