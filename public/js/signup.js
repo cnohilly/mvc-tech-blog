@@ -19,13 +19,16 @@ async function signupFormHandler(event) {
                 // replace location to homepage + reload
                 document.location.replace('/');
                 document.location.reload();
+            } else {
+                // will show alert if the user failed to sign up, either from a post error or the fields are empty
+                $('.signup-alert').removeClass('d-none');
             }
         } catch (err) {
             console.log(err);
         }
+    } else {
+        $('.signup-alert').removeClass('d-none');
     }
-    // will show alert if the user failed to sign up, either from a post error or the fields are empty
-    $('.signup-alert').removeClass('d-none');
 }
 
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);

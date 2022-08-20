@@ -21,13 +21,16 @@ async function loginFormHandler(event) {
                 // replace location to homepage + reload
                 document.location.replace('/');
                 document.location.reload();
+            } else {
+                // will show alert if the user failed to login, either from a post error or the fields are empty
+                $('.login-alert').removeClass('d-none');
             }
         } catch (err) {
             console.log(err);
         }
+    } else {
+        $('.login-alert').removeClass('d-none');
     }
-    // will show alert if the user failed to login, either from a post error or the fields are empty
-    $('.login-alert').removeClass('d-none');
 }
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
