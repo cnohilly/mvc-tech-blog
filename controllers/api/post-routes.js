@@ -77,13 +77,13 @@ router.post('/', async (req, res) => {
 // route to update post
 router.put('/:id', async (req, res) => {
     try {
-        const dbPostData = await Post.update(
-            {
-                title: req.body.title,
-            },
+        // passes the body to update so we only update what is specified
+        // must be the owner of the post to update it 
+        const dbPostData = await Post.update(req.body,
             {
                 where: {
-                    id: req.params.id
+                    id: req.params.id,
+                    user_id: req.session.user_id
                 }
             }
         );
@@ -100,10 +100,13 @@ router.put('/:id', async (req, res) => {
 
 // route to delete post
 router.delete('/:id', async (req, res) => {
+    console.log('here');
     try {
+        // api call must be from the owner of the post to delete
         const dbPostData = await Post.destroy({
             where: {
-                id: req.params.id
+                id: req.params.id,
+                user_id: req.session.user_id
             }
         });
         if (!dbPostData) {

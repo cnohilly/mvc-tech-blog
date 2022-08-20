@@ -1,8 +1,8 @@
 <article class="card mx-3 post-card" data-post-id="{{id}}">
     <a href="/post/{{id}}" class="text-dark text-decoration-none">
-        <div class="card-header d-flex justify-content-between">
-            <h3>{{title}}</h3>
-            <div>Posted by {{user.username}} on {{format_date created_at}} </div>
+        <div class="card-header d-flex justify-content-between flex-md-row flex-column">
+            <h3 class="text-start me-3">{{title}}</h3>
+            <div class="flex-md-shrink-0">Posted by {{user.username}} on {{format_date created_at}} </div>
         </div>
     </a>
     <div class="card-body">

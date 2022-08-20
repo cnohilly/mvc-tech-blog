@@ -1,0 +1,41 @@
+<div class="container mt-3">
+    <div class="accordion" id="posts-accordion">
+        {{#each posts as |post| }}
+        <div class="accordion-item" data-post-id="{{post.id}}">
+            <h2 class="accordion-header" id="post-heading-{{post.id}}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#post-{{post.id}}" aria-expanded="true" aria-controls="post-{{post.id}}">
+                    {{post.title}}
+                </button>
+            </h2>
+            <div id="post-{{post.id}}" class="accordion-collapse collapse p-2"
+                aria-labelledby="post-heading-{{post.id}}" data-bs-parent="#posts-accordion">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <form class="edit-post-form" id="{{post.id}}">
+                                <div class="input-group">
+                                    <span class="input-group-text">Title</span>
+                                    <input class="form-control post-title" type="text" id="post-title-{{post.id}}"
+                                        name="post-title" value="{{post.title}}">
+                                </div>
+                                <div class="input-group mt-1">
+                                    <span class="input-group-text">Content</span>
+                                    <textarea name="post-content" id="post-content-{{post.id}}"
+                                        class="form-control post-content">{{post.content}}</textarea>
+                                </div>
+                                <div class="buttons d-flex justify-content-center mt-2">
+                                    <button class="btn btn-primary save-post-btn me-2" type="submit">Save</button>
+                                    <button class="btn btn-danger delete-post-btn ms-2" type="button">Delete</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
