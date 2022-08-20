@@ -87,6 +87,10 @@ router.get('/post/:id', async (req, res) => {
 
 // route for dashboard with all the users posts and the ability to create new posts
 router.get('/dashboard', async (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+        return;
+    }
     try {
         const dbPostData = await Post.findAll({
             where: {
