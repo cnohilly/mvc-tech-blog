@@ -1,9 +1,8 @@
-# 14 Model View Controller (MVC): Tech Blog
+# 14 Model View Controller (MVC): Tech Blog - Tech It Out
 
-Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!
+[Tech It Out](https://tech-it-out-blog.herokuapp.com/) is a simple blog style website where users can create accounts, create posts of their own, and comment on posts. Users can use the dashboard to edit posts or to be directed to the page to create a new post.
 
-Your challenge this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
-
+The goal of this project was to use Node and Express to create a website in which users can create and manipulate the data stored in the backend database with MySQL. This follows the MVC paradigm and design structure using Handlebars.js as a template language for the front end webpages, Sequelize for the ORM with MySQL and Express-Session for managing user authentication.
 
 ## User Story
 
@@ -51,28 +50,53 @@ WHEN I am idle on the site for more than a set time
 THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ```
 
-## Mock-Up
+## Technologies Used
 
-The following animation demonstrates the application functionality:
+* [express-handlebars](https://www.npmjs.com/package/express-handlebars)
+* [MySQL2](https://www.npmjs.com/package/mysql2)
+* [Sequelize](https://www.npmjs.com/package/sequelize)
+* [dotenv package](https://www.npmjs.com/package/dotenv) 
+* [bcrypt package](https://www.npmjs.com/package/bcrypt)
+* [express-session](https://www.npmjs.com/package/express-session)
+* [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 
-![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./assets/14-mvc-homework-demo-01.gif)
+## Starting the Application (locally)
 
+To start the application, you must install the node modules and packages necessary which can be done using this command in the terminal at the root of the project:
 
-## Getting Started
+```
+npm i
+```
 
-Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to use Handlebars.js for your Views, use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a MySQL database for your Models, and create an Express.js API for your Controllers.
+ You must then create a .env file at the root of the project with the db name, db user and db password in the following format:
 
-You’ll also need the [dotenv package](https://www.npmjs.com/package/dotenv) to use environment variables, the [bcrypt package](https://www.npmjs.com/package/bcrypt) to hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
+```
+DB_NAME=tech_blog_db
+DB_USER=
+DB_PW=
+```
 
-**Note**: The [express-session](https://www.npmjs.com/package/express-session) package stores the session data on the client in a cookie. When you are idle on the site for more than a set time, the cookie will expire and you will be required to log in again to start a new session. This is the default behavior and you do not have to do anything to your application other than implement the npm package.
+Create the database by running mysql in the terminal and using:
 
-## Review
+```
+source db/schema.sql
+```
 
-You are required to submit BOTH of the following for review:
+After creating the database, you can exit mysql and in the terminal can then create the seed data using this command:
 
-* The URL of the functional, deployed application.
+```
+npm run seed
+```
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+Finally, you can then start the application and server using the command:
 
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+```
+npm start
+```
+## Deployed Application
+
+The deployed application is hosted on Heroku and can be found here: [Tech It Out](https://tech-it-out-blog.herokuapp.com/)
+
+The deployed application has seeded the dummy data in order to display the appearance and functionality.
+
+![tech-it-out example screenshot](./assets/tech-it-out-screenshot.jpg)
