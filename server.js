@@ -11,8 +11,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
-    secret: 'tech blog secret',
-    cookie: {},
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
+    rolling: true, // sets rolling to true to reset expiration
+    cookie: {
+        maxAge: 1000 * 60 * 10 // 10 minutes (1000ms * 60s * 10m)
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
